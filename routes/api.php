@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,10 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+# http://datatables.dev:8080/api/users ->json response
+Route::get('/users', function (Request $request) {
+    $users = User::all();
+    return $users;
+    return $request->user();
+});

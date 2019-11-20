@@ -1,0 +1,8 @@
++--------+----------+------------+------+---------+--------------+
+| Domain | Method   | URI        | Name | Action  | Middleware   |
++--------+----------+------------+------+---------+--------------+
+|        | GET|HEAD | /          |      | Closure | web          |
+|        | GET|HEAD | api/user   |      | Closure | api,auth:api |
+|        | POST     | deleteItem |      | Closure | web          |
+|        | POST     | editItem   |      | Closure | web          |
++--------+----------+------------+------+---------+--------------+
