@@ -3,6 +3,7 @@
 +--------+----------+------------+------+---------+--------------+
 |        | GET|HEAD | /          |      | Closure | web          |
 |        | GET|HEAD | api/user   |      | Closure | api,auth:api |
+|        | GET|HEAD | api/users  |      | Closure | api          |
 |        | POST     | deleteItem |      | Closure | web          |
 |        | POST     | editItem   |      | Closure | web          |
 +--------+----------+------------+------+---------+--------------+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Datatables.net implementation in Laravel</title>
+	<title>Datatables.net in Laravel 5.6</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- datatables.net js css -->
@@ -24,7 +24,7 @@
 					<th class="text-center">id</th>
 					<th class="text-center">First Name</th>
 					<th class="text-center">Last Name</th>
-					<th class="text-center">Email</th>
+					{{-- <th class="text-center">Email</th> --}}
 					<th class="text-center">Gender</th>
 					<th class="text-center">Country</th>
 					<th class="text-center">Salary ($)</th>
@@ -36,18 +36,22 @@
 					<td>{{$item->id}}</td>
 					<td>{{$item->first_name}}</td>
 					<td>{{$item->last_name}}</td>
-					<td>{{$item->email}}</td>
+					{{-- <td>{{$item->email}}</td> --}}
 					<td>{{$item->gender}}</td>
 					<td>{{$item->country}}</td>
 					<td>{{$item->salary}}</td>
-					<td><button class="edit-modal btn btn-info"
-							data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->email}},{{$item->gender}},{{$item->country}},{{$item->salary}}">
+					<td width="200px">
+						<button class="edit-modal btn btn-info" title="edit"
+							{{-- data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->email}},{{$item->gender}},{{$item->country}},{{$item->salary}}"> --}}
+							data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->gender}},{{$item->country}},{{$item->salary}}">
 							<span class="glyphicon glyphicon-edit"></span> Edit
 						</button>
-						<button class="delete-modal btn btn-danger"
-							data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->email}},{{$item->gender}},{{$item->country}},{{$item->salary}}">
+						<button class="delete-modal btn btn-danger" title="delete"
+							{{-- data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->email}},{{$item->gender}},{{$item->country}},{{$item->salary}}"> --}}
+							data-info="{{$item->id}},{{$item->first_name}},{{$item->last_name}},{{$item->gender}},{{$item->country}},{{$item->salary}}">
 							<span class="glyphicon glyphicon-trash"></span> Delete
-						</button></td>
+						</button>
+					</td>
 				</tr>
 			@endforeach
 			<thead>
@@ -55,7 +59,7 @@
 					<th class="text-center">id</th>
 					<th class="text-center">First Name</th>
 					<th class="text-center">Last Name</th>
-					<th class="text-center">Email</th>
+					{{-- <th class="text-center">Email</th> --}}
 					<th class="text-center">Gender</th>
 					<th class="text-center">Country</th>
 					<th class="text-center">Salary ($)</th>
@@ -81,6 +85,7 @@
 							<input type="text" class="form-control" id="fid" disabled>
 						</div>
 					</div>
+
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="fname">First Name</label>
 						<div class="col-sm-10">
@@ -88,6 +93,7 @@
 						</div>
 					</div>
 					<p class="fname_error error text-center alert alert-danger hidden"></p>
+
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="lname">Last Name:</label>
 						<div class="col-sm-10">
@@ -95,13 +101,15 @@
 						</div>
 					</div>
 					<p class="lname_error error text-center alert alert-danger hidden"></p>
-					<div class="form-group">
+
+					{{-- <div class="form-group">
 						<label class="control-label col-sm-2" for="email">Email</label>
 						<div class="col-sm-10">
 							<input type="email" class="form-control" id="email">
 						</div>
 					</div>
-					<p class="email_error error text-center alert alert-danger hidden"></p>
+					<p class="email_error error text-center alert alert-danger hidden"></p> --}}
+
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="gender">Gender</label>
 						<div class="col-sm-10">
@@ -112,23 +120,25 @@
 							</select>
 						</div>
 					</div>
+
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="country">Country:</label>
 						<div class="col-sm-10">
 							<input type="name" class="form-control" id="country">
 						</div>
 					</div>
-					<p
-						class="country_error error text-center alert alert-danger hidden"></p>
+					<p class="country_error error text-center alert alert-danger hidden"></p>
+
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="salary">Salary </label>
 						<div class="col-sm-10">
 							<input type="name" class="form-control" id="salary">
 						</div>
 					</div>
-					<p
-						class="salary_error error text-center alert alert-danger hidden"></p>
+					<p class="salary_error error text-center alert alert-danger hidden"></p>
+
 				</form>
+
 				<div class="deleteContent">Are you Sure you want to delete 
 					<span class="dname"></span> ? <span	class="hidden did"></span>
 				</div>
@@ -188,10 +198,16 @@ function fillmodalData(details){
 $('#fid').val(details[0]);
 $('#fname').val(details[1]);
 $('#lname').val(details[2]);
-$('#email').val(details[3]);
-$('#gender').val(details[4]);
-$('#country').val(details[5]);
-$('#salary').val(details[6]);
+$('#gender').val(details[3]);
+$('#country').val(details[4]);
+$('#salary').val(details[5]);
+// $('#fid').val(details[0]);
+// $('#fname').val(details[1]);
+// $('#lname').val(details[2]);
+// $('#email').val(details[3]);
+// $('#gender').val(details[4]);
+// $('#country').val(details[5]);
+// $('#salary').val(details[6]);
 }
 
 $('.modal-footer').on('click', '.edit', function() {
@@ -203,7 +219,7 @@ $('.modal-footer').on('click', '.edit', function() {
 			'id': $("#fid").val(),
 			'fname': $('#fname').val(),
 			'lname': $('#lname').val(),
-			'email': $('#email').val(),
+			// 'email': $('#email').val(),
 			'gender': $('#gender').val(),
 			'country': $('#country').val(),
 			'salary': $('#salary').val()
@@ -219,10 +235,10 @@ $('.modal-footer').on('click', '.edit', function() {
 					$('.lname_error').removeClass('hidden');
 					$('.lname_error').text("Last name can't be empty !");
 				}
-				if(data.errors.email) {
-					$('.email_error').removeClass('hidden');
-					$('.email_error').text("Email must be a valid one !");
-				}
+				// if(data.errors.email) {
+				// 	$('.email_error').removeClass('hidden');
+				// 	$('.email_error').text("Email must be a valid one !");
+				// }
 				if(data.errors.country) {
 					$('.country_error').removeClass('hidden');
 					$('.country_error').text("Country must be a valid one !");
@@ -234,11 +250,30 @@ $('.modal-footer').on('click', '.edit', function() {
 			}
 			else {
 				$('.error').addClass('hidden');
-				$('.item' + data.id).replaceWith("<tr class='item" + data.id + "'><td>" +
-					data.id + "</td><td>" + data.first_name +
-					"</td><td>" + data.last_name + "</td><td>" + data.email + "</td><td>" +
-						data.gender + "</td><td>" + data.country + "</td><td>" + data.salary +
-						"</td><td><button class='edit-modal btn btn-info' data-info='" + data.id+","+data.first_name+","+data.last_name+","+data.email+","+data.gender+","+data.country+","+data.salary+"'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-info='" + data.id+","+data.first_name+","+data.last_name+","+data.email+","+data.gender+","+data.country+","+data.salary+"' ><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+				$('.item' + data.id).replaceWith("<tr class='item" + 
+					data.id + "'><td>" +
+					data.id + "</td><td>" + 
+					data.first_name +"</td><td>" + 
+					data.last_name + "</td><td>" + 
+					// data.email + "</td><td>" +
+					data.gender + "</td><td>" + 
+					data.country + "</td><td>" + 
+					data.salary +
+					"</td><td><button class='edit-modal btn btn-info' data-info='" + 
+					data.id+","+
+					data.first_name+","+
+					data.last_name+","+
+					// data.email+","+
+					data.gender+","+
+					data.country+","+
+					data.salary+"'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-info='" + 
+					data.id+","+
+					data.first_name+","+
+					data.last_name+","+
+					// data.email+","+
+					data.gender+","+
+					data.country+","+
+					data.salary+"' ><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
 				}}
 	});
 });
