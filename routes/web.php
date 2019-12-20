@@ -17,6 +17,16 @@ use App\Data;								// bring in
 
 Route::get ( '/', function (Request $request) 
 {
+	# ok
+	$data = Data::all();
+	session()->flash('message', 'data loaded');
+	return view ('welcome')->with('data', $data);
+	
+	# ok
+	$data = Data::where('salary','>', 8000)->get();
+	return view('welcome', compact('data', $data));	
+	
+	# ok
 	$data = Data::all();
 	return view ('welcome')->withData($data);
 } );

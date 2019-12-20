@@ -15,7 +15,7 @@ use App\Data;                       // bring in
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) 
+$factory->define(User::class, function (Faker $faker) 
 {   
     static $password;
 
@@ -27,14 +27,14 @@ $factory->define(App\User::class, function (Faker $faker)
     ];
 });
 
-$factory->define(App\Data::class, function (Faker $faker) 
+$factory->define(Data::class, function (Faker $faker) 
 {   
     return [
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'first_name' => $faker->randomElement($array = array ('AUDI', 'VW', 'BMW', 'MAZDA', 'RENAULT')),
+        'last_name' => $faker->randomElement($array = array ('Quattro', 'Miata', 'X-Type', 'Fiesta', 'X7', 'Clio')),
         // 'email' => $faker->safeEmail,
-        'gender' =>  $faker->randomElement($array = array ('Male', 'Female')),
-        'country' => $faker->country,
-        'salary' => $faker->randomFloat(3, 2000, 12000)
+        'gender' =>  $faker->randomElement($array = array ('Coupe', 'Limousine', 'SUV')),
+        'country' => $faker->randomElement($array = array ('Germany', 'Japan', 'USA', 'France')),
+        'salary' => $faker->randomFloat(15000, 21000, 38000, 26000, 9000),
     ];
 });
